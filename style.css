@@ -1,0 +1,805 @@
+/* --- FUNDAL ȘI TIPOGRAFIE --- */
+body {
+    font-family: 'Lora', serif; /* Font Serif exclusiv pentru versete/lectură */
+    background-color: #0d1117; 
+    color: #cdd9e5;            
+    line-height: 1.8;
+    margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    html {
+    scroll-behavior: smooth;
+}
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px 0;
+    background: linear-gradient(180deg, #090d13 0%, #0d1117 100%);
+    border-bottom: 2px solid #1f6feb;
+    position: relative;
+}
+
+.header-inner { display: flex; align-items: center; justify-content: center; gap: 15px; }
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    color: #79c0ff;         
+    margin: 0;
+    letter-spacing: 3px;
+    text-shadow: 0 0 40px rgba(121, 192, 255, 0.15);
+}
+
+.header-subtitle { 
+    font-family: 'Inter', sans-serif; /* Font curat pentru UI */
+    font-size: 0.8rem;
+    color: #3d5a80; 
+    letter-spacing: 5px;
+    margin: 5px 0 20px;
+    text-transform: uppercase;
+}
+
+/* --- NAVIGARE CĂRȚI --- */
+nav {
+    display: flex; flex-wrap: wrap; gap: 8px; padding: 20px;
+    background: #090d13; border-bottom: 1px solid #161b22; justify-content: center;
+}
+
+.testament-label { 
+    width: 100%; text-align: center; font-family: 'Cinzel', serif;
+    font-size: 0.85rem; color: #3d5a80; letter-spacing: 4px;
+    text-transform: uppercase; margin: 15px 0 10px; padding-top: 15px;
+    border-top: 1px solid #161b22;
+}
+
+/* --- BUTOANE STILIZATE --- */
+button {
+    font-family: 'Inter', sans-serif; 
+    padding: 8px 16px;
+    cursor: pointer;
+    background: transparent;
+    color: #79c0ff;
+    border: 1px solid #1f3a5f;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+button:hover {
+    background: #1f6feb;
+    color: #ffffff;
+    border-color: #58a6ff; 
+    transform: translateY(-2px) scale(1.02); 
+    box-shadow: 0 8px 20px rgba(31, 111, 235, 0.3), 0 0 12px rgba(88, 166, 255, 0.5);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); 
+}
+
+button:active {
+    transform: translateY(1px) scale(0.98); 
+    box-shadow: 0 2px 5px rgba(31, 111, 235, 0.3), 0 0 0 rgba(88, 166, 255, 0); 
+}
+
+/* --- SECȚIUNEA DE CĂUTARE --- */
+#search-section { text-align: center; padding: 20px; background: #0d1117; }
+#search-input {
+    font-family: 'Inter', sans-serif;
+    background: #090d13; border: 1px solid #30363d; color: #cdd9e5;
+    padding: 10px 15px; border-radius: 6px; width: 280px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #58a6ff;
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
+}
+
+/* --- CONȚINUTUL BIBLIEI --- */
+#bible-content {
+    max-width: 780px; margin: 20px auto; padding: 30px 40px;
+    background: #161b22; color: #cdd9e5; border-radius: 12px;
+    border: 1px solid #30363d; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    scroll-margin-top: 20px; 
+}
+#bible-content h2 {
+    font-family: 'Cinzel', serif; color: #79c0ff; text-align: center;
+    border-bottom: 1px solid #30363d; padding-bottom: 15px;
+}
+
+.search-results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.search-item {
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.search-item:hover {
+    border-color: #58a6ff;
+    background: #222933;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.search-item-header {
+    font-family: 'Cinzel', serif;
+    color: #79c0ff;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.search-item-text {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #adbac7;
+    font-style: italic;
+}
+
+mark {
+    background: rgba(242, 199, 68, 0.25);
+    color: #f2c744;
+    border-radius: 3px;
+    padding: 0 3px;
+    font-weight: 600;
+}
+
+/* ACCESIBILITATE (ZOOM ȘI AUDIO) */
+.accessibility-controls {
+    display: flex; justify-content: center; gap: 12px;
+    margin: 10px 0 30px 0;
+}
+.accessibility-controls button {
+    background: #21262d; border-color: #30363d; color: #cdd9e5; padding: 6px 12px;
+}
+.accessibility-controls button:hover {
+    background: #238636; 
+    border-color: #2ea043; 
+    box-shadow: 0 8px 20px rgba(35, 134, 54, 0.3), 0 0 12px rgba(46, 160, 67, 0.5); 
+    color: white;
+}
+
+/* GRID CAPITOLE */
+.chapter-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 25px 0; }
+.chapter-btn { width: 52px; height: 52px; border-radius: 8px !important; display: flex; align-items: center; justify-content: center; font-size: 1rem;}
+.chapter-btn:hover { transform: translateY(-3px) scale(1.05); } 
+
+/* VERSETE */
+.verse {
+    margin-bottom: 16px; font-size: 1.1rem; line-height: 1.8;
+    color: #cdd9e5;
+    transition: font-size 0.3s ease; 
+}
+.verse-number { color: #58a6ff; font-weight: bold; margin-right: 10px; font-size: 0.8rem; vertical-align: super; font-family: 'Inter', sans-serif;}
+
+/* --- HARTA (SUB TEXT) --- */
+.map-section-divider { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 60px 0 20px; }
+.map-section-divider h3 { font-family: 'Cinzel', serif; color: #79c0ff; letter-spacing: 3px; font-size: 1.2rem; }
+.map-controls { text-align: center; margin-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+
+#map-container { max-width: 850px; margin: 0 auto 50px; padding: 0 20px; }
+#map { height: 450px; width: 100%; border-radius: 12px; border: 1px solid #30363d; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1; transition: filter 0.3s ease; }
+
+/* REGLAJE PENTRU FULLSCREEN MOD */
+#map-container:-webkit-full-screen { width: 100vw !important; max-width: 100% !important; padding: 0; margin: 0; background: #0d1117;}
+#map-container:-moz-full-screen { width: 100vw !important; max-width: 100% !important; padding: 0; margin: 0; background: #0d1117;}
+#map-container:fullscreen { width: 100vw !important; max-width: 100% !important; padding: 0; margin: 0; background: #0d1117;}
+#map-container:fullscreen #map { height: 100vh !important; border-radius: 0; border: none; }
+
+/* ANIMAȚIA DE DESENARE A RUTEI */
+.animated-route {
+    stroke-dasharray: 4000; 
+    stroke-dashoffset: 4000; 
+    animation: deseneazaRuta 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes deseneazaRuta {
+    to { stroke-dashoffset: 0; }
+}
+
+/* ETICHETE HARTA */
+.label-romana {
+    font-family: 'Inter', sans-serif; background: rgba(13, 17, 23, 0.9); border: 1px solid #1f6feb; color: #79c0ff;
+    padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.leaflet-popup-content-wrapper { font-family: 'Inter', sans-serif; background: #161b22 !important; color: #cdd9e5 !important; border: 1px solid #30363d; border-radius: 8px; }
+.leaflet-popup-tip { background: #1f6feb !important; }
+
+/* FOOTER */
+footer { text-align: center; padding: 60px 20px; color: #484f58; font-family: 'Cinzel', serif; font-size: 0.9rem; border-top: 1px solid #161b22; }
+.footer-sub { font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 2px; margin-top: 10px; }
+
+/* --- PLAYER AUDIO AMBIENTAL --- */
+.ambient-music-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: #090d13; 
+    border-bottom: 1px solid #161b22;
+}
+
+.music-info {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: #79c0ff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+#music-status {
+    font-style: italic;
+    color: #8b949e; 
+    font-family: 'Inter', sans-serif;
+}
+
+#music-selector {
+    font-family: 'Inter', sans-serif;
+    background: #161b22;
+    color: #cdd9e5;
+    border: 1px solid #30363d;
+    padding: 8px 12px;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#music-selector:focus, #music-selector:hover { 
+    border-color: #58a6ff; 
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.2);
+}
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #161b22;
+    padding: 6px 15px;
+    border-radius: 20px;
+    border: 1px solid #30363d;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100px;
+    background: transparent;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #58a6ff;
+    cursor: pointer;
+    margin-top: -5px;
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.8);
+    transition: transform 0.2s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.2); 
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #1f3a5f;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    
+    h1 {
+        font-size: 1.7rem !important;
+        letter-spacing: 2px;
+    }
+    .header-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+    }
+
+    /* 2. Repararea padding-ului: Textul respiră mult mai bine pe ecranul telefonului */
+    #bible-content {
+        padding: 20px 16px !important;
+        margin: 15px 10px !important;
+    }
+    #quiz-container {
+        padding: 25px 16px !important;
+        margin: 25px 10px !important;
+    }
+    #question-text {
+        font-size: 1.25rem !important;
+        margin-bottom: 25px;
+    }
+
+    /* 3. Mărirea zonelor de atingere (Touch Targets) conform standardelor Google */
+    .selector-limba button {
+        padding: 12px 18px !important; 
+        font-size: 1rem !important;
+    }
+    
+    nav {
+        padding: 12px 8px !important;
+        gap: 6px !important;
+    }
+    nav button {
+        padding: 11px 14px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .quiz-options button {
+        padding: 16px 20px !important;
+        font-size: 1rem !important;
+    }
+
+    /* 4. ELIMINARE STICKY HOVER: Previne blocarea sau deplasarea butoanelor la atingere */
+    button:hover, 
+    .search-item:hover, 
+    .quiz-controls button:hover, 
+    .quiz-options button:hover:not(.correct):not(.wrong) {
+        transform: none !important; /* Dezactivăm mișcările 3D care agață pe mobil */
+        box-sizing: border-box;
+        box-shadow: none !important;
+    }
+
+    /* Oferim un feedback tactil instant la apăsare (Când degetul e activ pe ecran) */
+    button:active, .quiz-options button:active {
+        background: #1f6feb !important;
+        color: #ffffff !important;
+        opacity: 0.8;
+    }
+
+    /* 5. Playerul Audio și Controalele existente (păstrate și curățate) */
+    .ambient-music-bar {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .music-controls {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    #music-selector, #play-pause-btn {
+        width: 100%;
+        height: 44px; 
+        font-size: 16px; 
+    }
+
+    .volume-container {
+        justify-content: center;
+        width: 100%;
+        margin-top: 5px;
+        padding: 10px 15px; 
+    }
+    input[type=range] {
+        width: 60%; 
+    }
+
+    
+    #search-section {
+        display: flex;
+        flex-direction: column;
+        padding: 15px 10px;
+        gap: 10px;
+    }
+
+    #search-input, #search-button {
+        width: 100% !important;
+        height: 44px;
+        margin: 0;
+        box-sizing: border-box;
+        font-size: 16px; 
+    }
+
+    /* 7. Secțiunea de hărți */
+    .map-controls {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+        gap: 4px;
+    }
+
+    .map-controls button {
+        width: 100%;
+        margin-bottom: 4px;
+        height: 42px;
+    }
+
+    #map-container {
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+
+    #map {
+        height: 320px; 
+    }
+}
+
+/* ==================== SECȚIUNEA QUIZ ==================== */
+#quiz-container {
+    max-width: 780px;
+    margin: 40px auto;
+    padding: 40px;
+    background: radial-gradient(100% 100% at top left, #1c2128 0%, #161b22 100%);
+    border: 1px solid #30363d;
+    border-top: 3px solid #79c0ff;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 8px rgba(121, 192, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.quiz-controls button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: #0d1117;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.quiz-controls button[onclick*="usor"] { border-color: #2ea043; color: #56d364; }
+.quiz-controls button[onclick*="usor"]:hover { 
+    background: rgba(46, 160, 67, 0.15); 
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(46, 160, 67, 0.3);
+}
+
+.quiz-controls button[onclick*="mediu"] { border-color: #d29922; color: #e3b341; }
+.quiz-controls button[onclick*="mediu"]:hover { 
+    background: rgba(210, 153, 34, 0.15); 
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(210, 153, 34, 0.3);
+}
+
+.quiz-controls button[onclick*="greu"] { border-color: #f85149; color: #ff7b72; }
+.quiz-controls button[onclick*="greu"]:hover { 
+    background: rgba(248, 81, 73, 0.15); 
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(248, 81, 73, 0.3);
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    color: #8b949e;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 15px;
+    margin-bottom: 35px;
+}
+
+#quiz-progress {
+    background: #21262d;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #30363d;
+    color: #58a6ff;
+}
+
+#quiz-score-live {
+    background: rgba(56, 139, 253, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(56, 139, 253, 0.3);
+    color: #79c0ff;
+}
+
+#question-text {
+    font-family: 'Cinzel', serif;
+    color: #f0f6fc;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 35px;
+    line-height: 1.5;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.quiz-options button {
+    font-family: 'Lora', serif; 
+    font-size: 1.1rem;
+    padding: 16px 24px;
+    text-align: left;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    color: #cdd9e5;
+    background: #0d1117;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.quiz-options button:hover:not(.correct):not(.wrong) {
+    background: #1c2128;
+    border-color: #58a6ff;
+    color: #f0f6fc;
+    transform: translateX(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 4px 0 0 #58a6ff;
+}
+
+.quiz-options button.correct {
+    background: linear-gradient(90deg, #1b4d24 0%, #238636 100%) !important;
+    border-color: #34d058 !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    /* Glow redus pentru răspuns corect */
+    box-shadow: 0 0 8px rgba(46, 160, 67, 0.3) !important;
+}
+
+.quiz-options button.correct::after {
+    content: '✓';
+    position: absolute;
+    right: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: #56d364;
+    font-weight: bold;
+}
+
+.quiz-options button.wrong {
+    background: linear-gradient(90deg, #661816 0%, #da3633 100%) !important;
+    border-color: #ff6a67 !important;
+    color: #ffffff !important;
+    /* Glow redus pentru răspuns greșit */
+    box-shadow: 0 0 8px rgba(218, 54, 51, 0.3) !important;
+}
+
+.quiz-options button.wrong::after {
+    content: '✗';
+    position: absolute;
+    right: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: #ff7b72;
+    font-weight: bold;
+}
+
+#next-btn, #quiz-result button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px 32px;
+    border-radius: 8px;
+    border: 1px solid #1f6feb;
+    background: linear-gradient(180deg, #1f6feb 0%, #1155cc 100%);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(31, 111, 235, 0.3);
+    transition: all 0.2s ease;
+}
+
+#next-btn:hover, #quiz-result button:hover {
+    background: linear-gradient(180deg, #388bfd 0%, #1f6feb 100%);
+    box-shadow: 0 6px 20px rgba(31, 111, 235, 0.5);
+    transform: translateY(-2px);
+}
+
+#quiz-result {
+    padding: 20px 0;
+}
+
+#final-score-text {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: #79c0ff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(121, 192, 255, 0.2);
+}
+
+#final-message {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    color: #8b949e;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+   /* Stilizarea containerului de limbi */
+.selector-limba {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+/* Stilizarea butoanelor cu steaguri */
+.selector-limba button {
+    background-color: #161b22; 
+    color: #cdd9e5;
+    border: 1px solid #30363d;
+    padding: 8px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Efect la trecerea mouse-ului peste iconițe */
+.selector-limba button:hover {
+    background-color: #21262d;
+    border-color: #8b949e;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Resetează poziția paginii pentru a elimina spațiul alb de sus */
+body {
+    top: 0 !important;
+}
+
+.goog-te-banner-frame, 
+.goog-te-banner, 
+.goog-te-balloon-frame,
+#goog-gt-tt {
+    display: none !important;
+}
+    
+@media (max-width: 768px) {
+    /* 1. Titlul să nu se mai rupă pe 3 rânduri */
+    h1 {
+        font-size: 1.6rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* 2. Reparam selectorul de limbi să se mână elegant pe rânduri noi */
+    .selector-limba {
+        flex-wrap: wrap; 
+        gap: 8px !important;
+        padding: 0 10px;
+    }
+
+    /* 3. Butoane mai ușor de apăsat cu degetul (UX standard Google/Apple) */
+    .selector-limba button, 
+    .controale-text button,
+    #quiz-area button {
+        padding: 10px 14px !important;
+        font-size: 0.85rem !important;
+        min-height: 44px; 
+        touch-action: manipulation; 
+    }
+
+    /* 4. Zona de citire a textului să aibă margini mai mici (folosim ecranul la maxim) */
+    .container-text-biblic {
+        padding: 15px !important;
+        margin: 10px !important;
+    }
+
+    /* 5. Harta să nu ocupe tot ecranul, ca utilizatorul să poată da scroll în pagină */
+    #map {
+        height: 45vh !important; 
+    }
+}
+
+@media (hover: none) {
+    button:hover {
+        background-color: #161b22 !important; 
+        color: #cdd9e5 !important;
+    }
+}
+     /* --- SIDEBAR MARCAJE --- */
+.sidebar {
+    height: 100%;
+    width: 0; 
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 0;
+    background-color: #161b22;
+    overflow-x: hidden;
+    transition: 0.3s;
+    border-left: 1px solid #30363d;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #30363d;
+}
+
+.sidebar h2 { font-size: 1.2rem; color: #79c0ff; margin: 0; }
+.close-btn { font-size: 2rem; background: none; border: none; color: #cdd9e5; cursor: pointer; }
+
+#lista-marcaje { padding: 15px; }
+
+.marcaj-item {
+    background-color: #0d1117;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.marcaj-item:hover { border-color: #79c0ff; background-color: #1f6feb; }
+
+.btn-marcaje {
+    background: none; border: 1px solid #30363d; color: #cdd9e5; padding: 8px 15px; border-radius: 5px; cursor: pointer; transition: 0.2s;
+}
+.btn-marcaje:hover { background: #30363d; }
+
+/* Steluța de lângă verset */
+.stea-verset {
+    cursor: pointer;
+    filter: grayscale(100%) opacity(0.3); 
+    transition: 0.2s;
+    margin-right: 5px;
+    user-select: none;
+}
+.stea-verset:hover, .stea-verset.salvat {
+    filter: grayscale(0%) opacity(1); 
+    text-shadow: 0 0 10px gold;
+}
+
+
+
+
+
+ .verset-evidentiat {
+    background-color: rgba(255, 221, 64, 0.2) !important;
+    border-radius: 4px;
+    transition: background-color 0.5s ease;
+}

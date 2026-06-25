@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://translate.googleapis.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://*.basemaps.cartocdn.com https://unpkg.com https://www.google.com https://translate.google.com http://translate.google.com https://translate.googleapis.com https://fonts.gstatic.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com;">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1f6feb">
+    <title>Scriptura Digitala- Proiect InfoEducație</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="selector-limba">
+      
+        <button onclick="schimbaLimba('')" title="Română">🇷🇴 RO</button>
+        <button onclick="schimbaLimba('en')" title="English">🇬🇧 EN</button>
+        <button onclick="schimbaLimba('fr')" title="Français">🇫🇷 FR</button>
+        <button onclick="schimbaLimba('de')" title="Deutsch">🇩🇪 DE</button>
+        <button onclick="schimbaLimba('es')" title="Español">🇪🇸 ES</button>
+        <button onclick="schimbaLimba('ja')" title="日本語">🇯🇵 JA</button>
+        <button onclick="schimbaLimba('ar')" title="العربية">🇸🇦 AR</button>
+        
+    </div>
+
+    <header>
+        <div class="header-inner">
+            <span class="header-icon">✦</span>
+            <h1>Biblia Interactivă</h1>
+            <span class="header-icon">✦</span>
+        </div>
+        <p class="header-subtitle">Scriptura Digitala-</p>
+        <nav id="books-nav"></nav>
+</body>
+</html>
+        <div class="ambient-music-bar">
+            <div class="music-info">
+                <span class="music-icon" title="Muzică Ambientală">🎧</span>
+                <span id="music-status">Alege o cântare din listă</span>
+            </div>
+            
+            <div class="music-controls">
+               <select id="music-selector" onchange="schimbaMuzica()">
+                    <option value="">-- Alege muzica de fundal --</option>
+                    <option value="1.mp3">Paraclisul Maicii Domnului(romanian song)</option>
+                    <option value="2.mp3">Doamne, strigat-am (Glas I)(romanian song)</option>
+                    <option value="3.mp3">Psalmul 50 (Pocăință)(romanian song)</option>
+                    <option value="4.mp3">Bine ești cuvântat, Doamne(romanian song)</option>
+                    <option value="5.mp3">Orthodox Byzantine Chant, Vol. 1</option>
+                    <option value="6.mp3">Sit and Relax with The Word of God(english)</option>
+                    <option value="7.mp3">Tiens mon cœur(francais song) </option>
+                    <option value="8.mp3">Oceans (Where Feet May Fail) - Hillsong UNITED(english song)</option>
+                    <option value="9.mp3">أبانا الذي في السماوات - جومانة مدور-(arabic song)</option>
+                    <option value="10.mp3">花も"Hanamo - Even In Flowers" - NCM2 CHOIR(japanese song)</option>
+                </select>
+                
+                <button id="play-pause-btn" onclick="toggleMuzica()">▶️ Start</button>
+                
+                <div class="volume-container">
+                    <span>🔈</span>
+                    <input type="range" id="volume-control" min="0" max="1" step="0.05" value="0.3" oninput="schimbaVolum()">
+                </div>
+            </div>
+            <audio id="bg-audio" loop></audio>
+        </div>
+
+       
+
+        <section id="bible-content">
+            <p style="text-align:center; color:#8b949e; font-family:'Inter', sans-serif;">Selectează o carte pentru a începe lectura.</p>
+        </section>
+
+        <div class="map-section-divider">
+            <span class="header-icon">✦</span>
+            <h3>Geografie Biblică</h3>
+            <span class="header-icon">✦</span>
+        </div>
+
+        <div class="map-controls">
+            <button onclick="schimbaHarta('iisus')">Traseul lui Iisus</button>
+            <button onclick="schimbaHarta('moise')">Traseul lui Moise</button>
+            <button onclick="schimbaHarta('samson')">Viața lui Samson</button>
+            <button onclick="schimbaHarta('maria')">Drumul Fec. Maria</button>
+            
+            <button onclick="toggleApostoli()" style="background-color: #2c3e50;">Trasee Apostoli ▼</button>
+            
+           <div id="apostoli-submenu" style="display: none; margin-top: 10px; width: 100%; gap: 5px; justify-content: center; flex-wrap: wrap;">
+    <button onclick="schimbaHarta('andrei')">Sf. Andrei</button>
+    <button onclick="schimbaHarta('matei')">Sf. Matei</button>
+    <button onclick="schimbaHarta('iacob')">Sf. Iacob cel Mare</button>
+    <button onclick="schimbaHarta('filip')">Sf. Filip</button>
+    <button onclick="schimbaHarta('bartolomeu')">Sf. Bartolomeu</button>
+    <button onclick="schimbaHarta('ioan')">Sf. Ioan Evanghelistul</button>
+    <button onclick="schimbaHarta('toma')">Sf. Toma</button>
+    <button onclick="schimbaHarta('iacob_mic')">Sf. Iacob cel Mic</button>
+    <button onclick="schimbaHarta('simon_zelotul')">Sf. Simon Zelotul</button>
+    <button onclick="schimbaHarta('iuda_tadeu')">Sf. Iuda Tadeu</button>
+    <button onclick="schimbaHarta('petru')">Sf.Petru</button>
+    <button onclick="schimbaHarta('iuda')">Iuda Iscarioteanul</button>
+</div>
+
+            <button onclick="toggleFullscreen()" id="btn-fullscreen" style="border-color: #58a6ff; color: #58a6ff;">⛶ Fullscreen Hartă</button>
+        </div>
+
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="map-section-divider">
+            <span class="header-icon">✦</span>
+            <h3>Test de Cunoștințe Biblice</h3>
+            <span class="header-icon">✦</span>
+        </div>
+
+        <section id="quiz-container">
+            <div id="quiz-menu">
+                <p style="text-align: center; color: #8b949e;">Alege nivelul de dificultate pentru a începe testul (8 întrebări):</p>
+                <div class="quiz-controls">
+                    <button onclick="startQuiz('usor')" style="border-color: #2ea043; color: #2ea043;">🟢 Ușor</button>
+                    <button onclick="startQuiz('mediu')" style="border-color: #d29922; color: #d29922;">🟡 Mediu</button>
+                    <button onclick="startQuiz('greu')" style="border-color: #f85149; color: #f85149;">🔴 Greu</button>
+                </div>
+            </div>
+
+            <div id="quiz-area" style="display: none;">
+                <div class="quiz-header">
+                    <span id="quiz-progress">Întrebarea 1 / 8</span>
+                    <span id="quiz-score-live">Scor: 0</span>
+                </div>
+                <h4 id="question-text">Textul întrebării va apărea aici?</h4>
+                <div id="options-container" class="quiz-options"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button id="next-btn" onclick="urmatoareaIntrebare()" style="display: none;">Următoarea Întrebare ➡</button>
+                </div>
+            </div>
+
+            <div id="quiz-result" style="display: none; text-align: center;">
+                <h3 id="final-score-text">Ai obținut X din Y puncte!</h3>
+                <p id="final-message"></p>
+                <button onclick="reseteazaQuiz()">🔄 Joacă din nou</button>
+            </div>
+        </section>
+
+    </main>
+
+   <footer>
+        <p>✦ Scriptura Digitala- ✦</p>
+        <p class="footer-sub">&copy; 2026 · Proiect InfoEducație</p>
+    </footer>
+
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+
+    <div style="position: fixed; top: -10000px; left: -10000px; width: 300px; height: 100px;">
+        <div id="google_translate_element"></div>
+    </div>
+
+  <script type="text/javascript">
+    
+    if (window.performance && window.performance.measure) {
+        const originalMeasure = window.performance.measure;
+        window.performance.measure = function(...args) {
+            try {
+                return originalMeasure.apply(this, args);
+            } catch (e) {
+                
+                return null;
+            }
+        };
+    }
+
+   
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'ro',
+            includedLanguages: 'en,fr,de,es,ja,ar',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+   
+    function schimbaLimba(codLimba) {
+        if (codLimba === 'ro' || codLimba === '') {
+            // Ștergem cookie-ul standard
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            
+            // Aplicăm ștergerea pe domeniu doar dacă NU suntem pe localhost/IP local
+            if (!window.location.hostname.includes('127.0.0.1') && !window.location.hostname.includes('localhost')) {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+            }
+            
+            var clasaGoogle = document.querySelector('.goog-te-combo');
+            if (clasaGoogle) {
+                clasaGoogle.value = '';
+                clasaGoogle.dispatchEvent(new Event('change'));
+            }
+            
+            window.location.reload();
+            return;
+        }
+
+        var clasaGoogle = document.querySelector('.goog-te-combo');
+        if (clasaGoogle) {
+            clasaGoogle.value = codLimba;
+            clasaGoogle.dispatchEvent(new Event('change'));
+        } else {
+            setTimeout(function() { schimbaLimba(codLimba); }, 500);
+        }
+    }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   
