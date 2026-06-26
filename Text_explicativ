@@ -1,0 +1,48 @@
+
+NOTĂ EXPLICATIVĂ: COMPONENTE EXTERNE ȘI DREPTURI DE AUTOR
+Proiect: Scriptura Digitală
+Concurs: InfoEducație
+
+
+Conform regulamentului oficial al concursului InfoEducație, prin acest
+document se specifică toate componentele utilizate în cadrul aplicației
+care nu au fost realizate de la zero de către autor, ci sunt preluate
+din surse externe sau din domeniul public:
+
+1. PARAGRAFE DE TEXT ȘI BAZE DE DATE
+
+* Textul Biblic utilizat în aplicație (fișierul sursă "ron-rccv.usfx.xml" 
+  și varianta convertită în JSON) este preluat din repozitorii publice 
+  open-source de digitizare a textelor.
+* Întreaga logică de parsare, filtrare și afișare dinamică a paragrafelor 
+  în interfața web a fost dezvoltată integral de autor.
+
+2. FOTOGRAFII ȘI FIȘIERE AUDIO
+
+* Melodiile de fundal  aparțin domeniului public (Public Domain).
+* Imaginile de fundal și iconițele grafice folosite pentru interfață 
+  sunt preluate de pe platforme cu licență liberă de utilizare non-comercială 
+  (Unsplash, Flaticon).
+
+3. COD SURSĂ EXTERN ȘI BIBLIOTECI
+
+* Pentru randarea hărții interactive s-a utilizat biblioteca open-source 
+  standard "Leaflet.js", împreună cu tile-urile de hartă oferite de 
+  OpenStreetMap.
+* Integrarea acestora, configurarea pinilor geografici și legătura cu 
+  textul au fost realizate de autor în scriptul principal.
+
+4. COD BINAR ȘI ALTE MODULE
+
+* Proiectul nu conține și nu utilizează fișiere executabile (.exe), 
+  biblioteci compilate în cod binar sau module proprietare închise.
+* Toate uneltele folosite în faza de dezvoltare (cum este interpretorul 
+  Python pentru scriptul de conversie "convert.py") sunt standard, 
+  gratuite și open-source.
+
+
+NOTĂ FINALĂ PRIVIND ORIGINALITATEA:
+Toată arhitectura site-ului, structura paginilor ("index.html"), 
+stilizarea vizuală ("style.css"), logica funcțională în JavaScript 
+("app.js") și scriptul de procesare a datelor ("convert.py") sunt 
+dezvoltate INTEGRAL de către autor.
